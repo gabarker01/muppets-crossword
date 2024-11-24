@@ -92,6 +92,12 @@ body {
   margin-bottom: 10px;
 }
 
+h3 {
+  margin-top:30px;
+  font-size: 12px;
+  text-align: center;
+}
+
 ul {
   list-style: none;
   padding: 0;
@@ -111,9 +117,9 @@ li:hover {
 }
 
 #check-button {
-  position: absolute;
-  margin-top: 300px;
-  margin-left: 40px;
+  position: flex;
+  margin-top: 70px;
+
   display: inline-block;
   outline: none;
   cursor: pointer;
@@ -138,35 +144,11 @@ li:hover {
   background-color: #1db954;
 }
 
-#name-button {
-  position: absolute;
-  margin-top: 300px;
-  margin-left: 40px;
-  display: inline-block;
-  outline: none;
-  cursor: pointer;
-  font-size: 10px; /* Smaller font size */
-  line-height: 1.2; /* Adjust line height for better spacing */
-  border-radius: 500px;
-  transition-property: background-color, border-color, color, box-shadow, filter;
-  transition-duration: .3s;
-  border: 3px solid black;
-  min-width: 120px; /* Reduced width */
-  white-space: normal;
-  font-weight: 700;
-  text-align: center;
-  color: white;
-  background-color: #464646;
-  height: 40px; /* Reduced height */
-}
-
 /* Hover effect */
 #name-button:hover {
   background-color: black;
   color: white;
 }
-
-
 
 .clue-number-cell {
   position: absolute;
@@ -203,4 +185,11 @@ li:hover {
   text-align: center;
   font-size: 14px;
   outline: none;
+}
+
+#clue-image {
+  margin-top: 20px; /* Add space between the clues and the image */
+  width: 300px;      /* Set a fixed width for the image */
+  height: auto;     /* Maintain the image's aspect ratio */
+  align-self: center; /* Center the image in the column */
 }

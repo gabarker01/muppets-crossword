@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Muppet Christmas Carol Cryptic Crossword</title>
   <link rel="icon" href="kermit2.png" type="image/png">
-  <link rel="stylesheet" href="styles2.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -22,6 +22,7 @@
         <h2>Across</h2>
         <ul id="across-clue-list"></ul>
         <button id="check-button">Check Words</button>
+        <audio id="audio" src="spirit.mp3"></audio>
         <h3>Made by George Barker 2024</h3>
       </div>
 
@@ -42,6 +43,8 @@
     const rows = 14;
     const cols = 17;
     const clues = [];
+    let score = 0;
+    let clueCount = 0;
 
     // Create grid cells dynamically
     for (let row = 0; row < rows; row++) {
@@ -101,8 +104,6 @@
               e.preventDefault(); // Prevent default backspace behavior
               prevCell.focus();
               prevCell.textContent = '';
-
-
             }
           }
         });
@@ -215,6 +216,7 @@
       } else {
         downClueList.appendChild(clueItem);
       }
+      clueCount += 1;
     }
 
     makeWord("cell-0-2", "DIMWIT", "At first, inserted couple in “the Marleys were dead, to begin with” confused a fool (6)", 1, 'down');
@@ -275,18 +277,37 @@
 
       }
     });
+    function getWellDoneScreen() {
+      console.log('hello');
+
+    }
 
     // Check words on button click
     checkButton.addEventListener('click', () => {
+      score = 0;
+      const audio = document.getElementById('audio');
+      audio.play();
       clues.forEach(({ word, cells }) => {
         const isCorrect = cells.every((cellId, index) =>
           document.getElementById(cellId)?.textContent === word[index]
         );
         cells.forEach(cellId => {
           const cell = document.getElementById(cellId);
-          if (cell) cell.classList.toggle('green', isCorrect);
+          if (cell) {
+            cell.classList.toggle('green', isCorrect);
+          }
         });
+        if (isCorrect) {
+          score +=1;
+          console.log('Score:' + score);
+        }
       });
+      if (score != clueCount) {
+        //alert(`Your score is ${score} and there's ${clueCount} clues in total. Do better.`)
+        getWellDoneScreen();
+      } else {
+        getWellDoneScreen();
+      }
     });
 
   </script>
